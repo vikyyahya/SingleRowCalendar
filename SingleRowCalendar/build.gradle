@@ -52,3 +52,17 @@ dependencies {
     api 'androidx.recyclerview:recyclerview-selection:1.1.0-alpha06'
 
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.vikyyahya'
+                artifactId = 'SingleRowCalendar'
+                version = '1.0.0'
+            }
+        }
+    }
+}
