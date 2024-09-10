@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 //apply plugin: 'com.novoda.bintray-release' // must be applied after your artifact generating plugin (eg. java / com.android.library)
 apply plugin: 'maven-publish'
 group = 'com.github.vikyyahya'
-version = '1.0.0-03'
+version = '1.0.5'
 
 android {
     compileSdkVersion 29
@@ -75,21 +75,16 @@ dependencies {
 
 publishing {
     publications {
-        // Publikasi AAR untuk library Android
-        mavenAar(MavenPublication) {
-            afterEvaluate {
-                from components.findByName('release')  // Gunakan komponen "release" untuk AAR
-            }
-
+        maven(MavenPublication) {
             groupId = 'com.github.vikyyahya'
-            artifactId = 'SingleRowCalendar'
-            version = '1.0.0-03'
+            artifactId = 'com-SingleRowCalendar'
+            version = "1.0.5"
+            pom {
+                description = 'First release'
+            }
         }
     }
-
     repositories {
-        maven {
-            url = uri("$buildDir/repo")  // Lokal atau remote repository
-        }
+        mavenLocal()
     }
 }
